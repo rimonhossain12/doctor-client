@@ -10,8 +10,8 @@ const Navbar = () => {
 		<li tabIndex={3}> <Link to="/login">Login</Link> </li>
 	</>
 	return (
-		<div className='px-12 sticky top-0 z-50'>
-			<div className="navbar bg-base-100">
+		<div className='sticky top-0 z-50'>
+			<div className="navbar bg-base-100 px-12">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label tabIndex={0} className="btn btn-ghost lg:hidden">
