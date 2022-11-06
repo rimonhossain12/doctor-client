@@ -27,12 +27,6 @@ const Login = () => {
                 </div>
             </div>
         </div>
-
-        // <div>
-        //     <div class="flex justify-center items-center h-screen">
-        //         Centered using Tailwind Flex
-        //     </div>
-        // </div>
     );
 };
 
