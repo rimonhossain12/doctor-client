@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
 	const menuBar = <>
 		<li tabIndex={0}> <Link to="/">Home</Link> </li>
-		<li tabIndex={1}> <Link to="/appointment">appointment</Link> </li>
-		<li tabIndex={1}> <Link to="/review">Review</Link> </li>
-		<li tabIndex={2}> <Link to="/contact">Contact us</Link> </li>
-		<li tabIndex={3}> <Link to="/login">Login</Link> </li>
+		<li tabIndex={1}> <Link to="/about">About</Link> </li>
+		<li tabIndex={2}> <Link to="/appointment">Appointment</Link> </li>
+		<li tabIndex={3}> <Link to="/review">Review</Link> </li>
+		<li tabIndex={4}> <Link to="/contact">Contact us</Link> </li>
+		<li tabIndex={5}> <Link to="/login">Login</Link> </li>
 	</>
 	return (
 		<div className='sticky top-0 z-50'>
