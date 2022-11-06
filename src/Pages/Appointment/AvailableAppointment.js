@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import SampleService from './SampleService';
 import MakeAppoint from './MakeAppoint';
+import BookingModal from './BookingModal';
 
 const AvailableAppointment = ({ date }) => {
     const [services, setServices] = useState([]);
@@ -15,8 +16,6 @@ const AvailableAppointment = ({ date }) => {
                 setServices(data)
             })
     }, []);
-
-    console.log('Specific data found = ', treatment);
 
     return (
         <div className='mb-10'>
@@ -44,6 +43,9 @@ const AvailableAppointment = ({ date }) => {
                     }
                 </div>
             </div>
+            {treatment && <BookingModal
+                setTreatment={setTreatment}
+            />}
 
         </div>
     );

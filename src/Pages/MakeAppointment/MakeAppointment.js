@@ -2,7 +2,6 @@ import React from 'react';
 import doctor from '../../../src/assets/images/doctor.png';
 import appointment from '../../../src/assets/images/appointment.png';
 
-
 const MakeAppointment = () => {
     return (
         <section className="flex justify-center items-center my-5"
@@ -12,10 +11,8 @@ const MakeAppointment = () => {
                 backgroundPosition: 'center center',
                 backgroundAttachment: 'fixed',
                 backgroundSize: 'cover',
-                // backgroundAttachment:'fixed'
             }}
         >
-
             <div className='flex-1 hidden lg:block'>
                 <figure>
                     <img src={doctor} alt="" className='mt-[-110px] w-3/4 rounded-lg' />
