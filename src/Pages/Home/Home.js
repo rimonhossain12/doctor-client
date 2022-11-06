@@ -1,4 +1,5 @@
 import React from 'react';
+import Contact from '../Contact/Contact';
 import MakeAppointment from '../MakeAppointment/MakeAppointment';
 import Testimonial from '../Testimonial/Testimonial';
 import Banner from './Banner';
@@ -20,6 +21,9 @@ const Home = () => {
             </div>
             <div className="px-12">
                 <Testimonial />
+            </div>
+            <div>
+                <Contact />
             </div>
         </>
     );
