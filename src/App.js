@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home';
 import Appointment from './Pages/Appointment/Appointment';
 import About from './Pages/About/About';
 import Review from './Pages/Review/Review';
+import Login from './Pages/Login/Login';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 				<Route path='/about' element={<About />} />
 				<Route path='/review' element={<Review />} />
 				<Route path='/appointment' element={<Appointment />} />
+				<Route path='/login' element={<Login />} />
 			</Routes>
 		</div>
 	);
