@@ -1,7 +1,7 @@
 import React from 'react';
 import footerBg from '../../../src/assets/images/footer.png';
 
-const Footer = () => {
+const FooterBg = () => {
     let year = new Date().getFullYear();
     console.log('year found', year)
     return (
@@ -43,4 +43,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default FooterBg;
