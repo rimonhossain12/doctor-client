@@ -18,7 +18,7 @@ const MakeAppointment = () => {
 
             <div className='flex-1 hidden lg:block'>
                 <figure>
-                    <img src={doctor} alt="" className='mt-[-110px] max-w-sm rounded-lg' />
+                    <img src={doctor} alt="" className='mt-[-110px] w-3/4 rounded-lg' />
                 </figure>
             </div>
             <div className="flex-1">
