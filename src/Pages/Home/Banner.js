@@ -1,10 +1,17 @@
 import React from 'react';
 import chair from '../../../src/assets/images/chair.png';
 import PrimaryButton from '../Shared/PrimaryButton';
+import bgChair from '../../assets/images/bg.png';
 
 const Banner = () => {
     return (
-        <div>
+        <section
+            style={{
+                background: `url(${bgChair})`,
+                backgroundAttachment: 'fixed',
+                backgroundPosition: 'center center',
+                backgroundSize: 'cover'
+            }}>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src={chair} alt='not found' className="max-w-sm w-full rounded-lg shadow-2xl" />
@@ -19,7 +26,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
