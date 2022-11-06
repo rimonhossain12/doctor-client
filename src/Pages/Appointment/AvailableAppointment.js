@@ -5,15 +5,18 @@ import MakeAppoint from './MakeAppoint';
 
 const AvailableAppointment = ({ date }) => {
     const [services, setServices] = useState([]);
-    let formattedDate = format(date, 'PP');
+    const [treatment, setTreatment] = useState(null);
 
+    let formattedDate = format(date, 'PP');
     useEffect(() => {
         fetch('services.json')
             .then(res => res.json())
             .then(data => {
                 setServices(data)
             })
-    }, [])
+    }, []);
+
+    console.log('Specific data found = ', treatment);
 
     return (
         <div className='mb-10'>
@@ -23,6 +26,7 @@ const AvailableAppointment = ({ date }) => {
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5'>
                 {
                     services.map(service => <SampleService
+                        key={service._id}
                         service={service}
                     />)
                 }
@@ -33,7 +37,9 @@ const AvailableAppointment = ({ date }) => {
                 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5'>
                     {
                         services.map(service => <MakeAppoint
+                            key={service._id}
                             service={service}
+                            setTreatment={setTreatment}
                         />)
                     }
                 </div>

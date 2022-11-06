@@ -3,7 +3,7 @@ import footerBg from '../../../src/assets/images/footer.png';
 
 const FooterBg = () => {
     let year = new Date().getFullYear();
-    console.log('year found', year)
+    // console.log('year found', year)
     return (
         <section
             style={{

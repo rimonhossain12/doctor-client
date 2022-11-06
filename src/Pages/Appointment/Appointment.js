@@ -5,9 +5,7 @@ import AvailableAppointment from './AvailableAppointment';
 
 const Appointment = () => {
     const [date, setDate] = useState(new Date());
-    // let selectedDate = date;
     let footer = <p>Please a correct date!</p>
-
     return (
         <>
             <div className='px-12'>
@@ -15,7 +13,9 @@ const Appointment = () => {
                     date={footer}
                     setDate={setDate}
                 />
-                <AvailableAppointment date={date} />
+                <AvailableAppointment
+                    date={date}
+                />
             </div>
             <div>
                 <FooterBg />

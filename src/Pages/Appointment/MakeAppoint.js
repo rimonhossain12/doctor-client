@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MakeAppoint = ({ service }) => {
+const MakeAppoint = ({ service, setTreatment }) => {
     const { name, slots } = service;
     return (
         <>
@@ -14,7 +14,10 @@ const MakeAppoint = ({ service }) => {
                         <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} Available</p>
                     </div>
                     <div className="card-actions justify-center">
-                        <button className="btn bg-gradient-to-r from-primary to-secondary text-white">Make an appointment</button>
+                        <button
+                            onClick={() => setTreatment(service)}
+                            className="btn bg-gradient-to-r from-primary to-secondary text-white"
+                        >Make an appointment</button>
                     </div>
                 </div>
             </div>
