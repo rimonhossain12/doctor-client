@@ -1,5 +1,4 @@
 import React from 'react';
-import BookingModal from './BookingModal';
 
 const MakeAppoint = ({ service, setTreatment }) => {
     const { name, slots } = service;
@@ -19,8 +18,8 @@ const MakeAppoint = ({ service, setTreatment }) => {
                             htmlFor="booking-modal"
                             onClick={() => setTreatment(service)}
                             className="btn bg-gradient-to-r from-primary to-secondary text-white"
+                            disabled={slots.length === 0}
                         >Make an appointment</label>
-                        <BookingModal />
                     </div>
                 </div>
             </div>
