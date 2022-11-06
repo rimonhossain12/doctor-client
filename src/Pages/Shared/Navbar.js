@@ -10,7 +10,7 @@ const Navbar = () => {
 		<li tabIndex={3}> <Link to="/login">Login</Link> </li>
 	</>
 	return (
-		<div className='px-12'>
+		<div className='px-12 sticky top-0 z-50'>
 			<div className="navbar bg-base-100">
 				<div className="navbar-start">
 					<div className="dropdown">
