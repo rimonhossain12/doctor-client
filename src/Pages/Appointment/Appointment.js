@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
 import AppointmentBanner from './AppointmentBanner';
+import AvailableAppointment from './AvailableAppointment';
+import { format } from 'date-fns';
 
 const Appointment = () => {
-    const [date,setDate] = useState(new Date());
+    let [date, setDate] = useState(new Date());
+    let selectedDate = date;
+    let footer = <p>Please a correct date!</p>
+    if (selectedDate) {
+        date = selectedDate;
+    }
+
     return (
         <div className='px-12'>
-            <AppointmentBanner date={date} setDate={setDate} />
+            <AppointmentBanner
+                date={footer}
+                setDate={setDate}
+            />
+            <AvailableAppointment date={date} />
         </div>
     );
 };
