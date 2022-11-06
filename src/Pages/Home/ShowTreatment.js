@@ -32,9 +32,9 @@ const ShowTreatment = () => {
     ]
     return (
         <section>
-            <div className='text-start py-10 lg:hidden'>
+            <div className='py-10 sm:w-screen lg:hidden'>
                 <h3 className='text-secondary uppercase text-2xl mb-3'>Our services</h3>
-                <h2 className='text-accent text-4xl'>Services We Provided</h2>
+                <p className='text-accent text-4xl text-start'>Services we give</p>
             </div>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-12">
                 {
