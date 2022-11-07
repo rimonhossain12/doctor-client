@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
@@ -18,7 +18,7 @@ const Login = () => {
 	] = useSignInWithEmailAndPassword(auth);
 
 	let signInError;
-	// let navigate = useNavigate();
+	let navigate = useNavigate();
 
 	const onSubmit = (data) => {
 		signInWithEmailAndPassword(data.email, data.password);
@@ -34,6 +34,7 @@ const Login = () => {
 	}
 
 	if (user) {
+		navigate('/appointment')
 		console.log(user);
 	}
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
+import { async } from '@firebase/util';
+
 
 
 const SignUp = () => {
@@ -14,19 +16,21 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, uError] = useUpdateProfile(auth);
 
     let signInError;
     let navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        createUserWithEmailAndPassword(data.email, data.password);
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name })
         console.log(data)
     };
 
-    if (error) {
+    if (error || uError) {
         signInError = <p className='text-red-500 text-thin'>{error.message}</p>
     }
-    if (loading) {
+    if (loading || updating) {
         return <LoadingSpinner />
     }
 
