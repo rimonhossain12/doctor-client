@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -29,6 +30,7 @@ const SignUp = () => {
                                     }
 
                                 )}
+                                type='text'
                                 aria-invalid={errors.name ? "true" : "false"}
                             />
 
@@ -55,6 +57,7 @@ const SignUp = () => {
                                         }
                                     }
                                 )}
+                                type='email'
                                 aria-invalid={errors.email ? "true" : "false"}
                             />
 
@@ -81,6 +84,7 @@ const SignUp = () => {
                                         }
                                     }
                                 )}
+                                type='password'
                                 aria-invalid={errors.password ? "true" : "false"}
                             />
 
@@ -89,11 +93,24 @@ const SignUp = () => {
                                 {errors.password?.type === 'minLength' && <p className='text-start text-red-500 text-thin'>{errors.password.message}</p>}
                             </label>
 
-
+                        </div>
+                        <div className='my-3'>
+                            {/* {signInError} */}
                         </div>
 
-                        <input type="submit" className='w-full max-w-xs btn bg-accent text-white' />
+                        <input type="submit" value='SignUp' className='w-full max-w-xs btn bg-accent text-white' />
                     </form>
+                    <p className='text-accent text-thin'>Already have an account?
+                        <Link to="/login">
+                            <small className='text-secondary'> Please login here</small>
+                        </Link>
+                    </p>
+
+                    <div className="divider">
+                        OR
+                    </div>
+
+                    <button className='btn btn-outline uppercase'>Continue with google</button>
 
 
 
