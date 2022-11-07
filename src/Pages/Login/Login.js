@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
@@ -17,15 +17,13 @@ const Login = () => {
 		error,
 	] = useSignInWithEmailAndPassword(auth);
 
-	const onSubmit = (e, data) => {
-		// e.preventDefault();
+	let signInError;
+	// let navigate = useNavigate();
+
+	const onSubmit = (data) => {
 		signInWithEmailAndPassword(data.email, data.password);
 		console.log(data);
 	};
-
-
-	let signInError;
-	let navigate = useNavigate();
 
 	if (error) {
 		signInError = <p className='text-red-500 text-thin'>{error.message}</p>
@@ -36,7 +34,7 @@ const Login = () => {
 	}
 
 	if (user) {
-		navigate('/home')
+		console.log(user);
 	}
 
 
@@ -45,35 +43,11 @@ const Login = () => {
 		<div className='flex justify-center items-center h-screen'>
 			<div className="card w-96 bg-base-100 shadow-xl">
 				<div className="card-body">
-					<h2 className="text-center text-secondary text-2xl font-semibold">SignUp</h2>
+					<h2 className="text-center text-secondary text-2xl font-semibold">Login</h2>
 
 					<form onSubmit={handleSubmit(onSubmit)}>
 
 						<div className="form-control w-full max-w-xs">
-							<label className="label">
-								<span className="label-text">Your Name</span>
-							</label>
-
-							<input
-								className='input input-bordered w-full max-w-xs'
-								{...register("name",
-									{
-										required: {
-											value: true,
-											message: 'Name is Required'
-										}
-									}
-
-								)}
-								type='text'
-								aria-invalid={errors.name ? "true" : "false"}
-							/>
-
-							<label className="label">
-								{errors.name?.type === 'required' && <p className='text-red-500 text-thin text-start'>{errors.name.message}</p>}
-							</label>
-
-
 							<label className="label">
 								<span className="label-text">Your Email</span>
 							</label>
@@ -128,9 +102,9 @@ const Login = () => {
 								{errors.password?.type === 'minLength' && <p className='text-start text-red-500 text-thin'>{errors.password.message}</p>}
 							</label>
 						</div>
-						<div className='my-3'>
+						{/* <div className='my-3'> */}
 							{signInError}
-						</div>
+						{/* </div> */}
 						<input type="submit" className='w-full max-w-xs btn bg-accent text-white' value='Login' />
 					</form>
 

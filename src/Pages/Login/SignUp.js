@@ -1,11 +1,39 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import LoadingSpinner from '../Shared/LoadingSpinner';
 
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    let signInError;
+    let navigate = useNavigate();
+
+    const onSubmit = (data) => {
+        createUserWithEmailAndPassword(data.email, data.password);
+        console.log(data)
+    };
+
+    if (error) {
+        signInError = <p className='text-red-500 text-thin'>{error.message}</p>
+    }
+    if (loading) {
+        return <LoadingSpinner />
+    }
+
+    if (user) {
+        navigate('/home')
+    }
+
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -95,7 +123,7 @@ const SignUp = () => {
 
                         </div>
                         <div className='my-3'>
-                            {/* {signInError} */}
+                            {signInError}
                         </div>
 
                         <input type="submit" value='SignUp' className='w-full max-w-xs btn bg-accent text-white' />
