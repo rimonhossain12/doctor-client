@@ -41,10 +41,6 @@ const Login = () => {
 		return <LoadingSpinner />
 	}
 
-
-
-
-
 	return (
 		<div className='flex justify-center items-center h-screen'>
 			<div className="card w-96 bg-base-100 shadow-xl">
