@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -26,6 +26,13 @@ const Login = () => {
 		console.log(data);
 	};
 
+	useEffect(() => {
+		if (user || gUser) {
+			navigate('/appointment')
+		}
+	}, [user, gUser, navigate])
+
+
 	if (error || gError) {
 		signInError = <p className='text-red-500 text-thin'>{error.message}</p>
 	}
@@ -34,10 +41,7 @@ const Login = () => {
 		return <LoadingSpinner />
 	}
 
-	if (user || gUser) {
-		navigate('/appointment')
-		// console.log(user);
-	}
+
 
 
 

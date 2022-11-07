@@ -4,10 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
-import { async } from '@firebase/util';
-import { gu } from 'date-fns/locale';
-
-
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
