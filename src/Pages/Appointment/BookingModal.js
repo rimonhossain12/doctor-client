@@ -34,7 +34,6 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
                                 }
                             </select>
 
-
                             <input type="text" name='name' value={user?.displayName} disabled className="input input-bordered w-full max-w-xs mb-2" />
                             <input type="email" name='email' value={user?.email} disabled className="input input-bordered w-full max-w-xs mb-2" />
                             <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full max-w-xs mb-2" />

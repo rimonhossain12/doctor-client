@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
 
@@ -9,6 +9,7 @@ import LoadingSpinner from '../Shared/LoadingSpinner';
 
 const Login = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
+	const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
 	const [
 		signInWithEmailAndPassword,
@@ -25,17 +26,17 @@ const Login = () => {
 		console.log(data);
 	};
 
-	if (error) {
+	if (error || gError) {
 		signInError = <p className='text-red-500 text-thin'>{error.message}</p>
 	}
 
-	if (loading) {
+	if (loading || gLoading) {
 		return <LoadingSpinner />
 	}
 
-	if (user) {
+	if (user || gUser) {
 		navigate('/appointment')
-		console.log(user);
+		// console.log(user);
 	}
 
 
@@ -104,7 +105,7 @@ const Login = () => {
 							</label>
 						</div>
 						{/* <div className='my-3'> */}
-							{signInError}
+						{signInError}
 						{/* </div> */}
 						<input type="submit" className='w-full max-w-xs btn bg-accent text-white' value='Login' />
 					</form>
@@ -119,7 +120,10 @@ const Login = () => {
 						OR
 					</div>
 
-					<button className='btn btn-outline uppercase'>Continue with google</button>
+					<button
+						className='btn btn-outline uppercase'
+						onClick={() => signInWithGoogle()}
+					>Continue with google</button>
 
 
 				</div>
