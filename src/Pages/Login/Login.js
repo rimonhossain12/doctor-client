@@ -17,8 +17,8 @@ const Login = () => {
 		error,
 	] = useSignInWithEmailAndPassword(auth);
 
-	const onSubmit = (e, data) => {
-		e.preventDefault();
+	const onSubmit = (data) => {
+		// e.preventDefault();
 		signInWithEmailAndPassword(data.email, data.password);
 		console.log(data);
 	};
