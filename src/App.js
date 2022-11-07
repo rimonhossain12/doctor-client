@@ -7,6 +7,7 @@ import About from './Pages/About/About';
 import Review from './Pages/Review/Review';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/Login/SignUp';
+import ContactUs from './Pages/Contact/ContactUs';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 				<Route path='/appointment' element={<Appointment />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<SignUp />} />
+				<Route path='/contact' element={<ContactUs />} />
 			</Routes>
 		</div>
 	);
