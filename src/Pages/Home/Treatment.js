@@ -3,7 +3,7 @@ import React from 'react';
 const Treatment = ({ treatment }) => {
     const { name, img, desc } = treatment;
     return (
-        <div className="card lg:max-w-96 shadow-xl">
+        <div className="card lg:max-w-96 shadow-xl lg:my-44">
             <figure className="px-10 pt-10">
                 <img src={img} alt="Shoes" className="rounded-xl" />
             </figure>

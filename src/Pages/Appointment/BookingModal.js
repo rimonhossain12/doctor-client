@@ -6,17 +6,37 @@ import auth from '../../firebase.init';
 const BookingModal = ({ treatment, setTreatment, date }) => {
     const [user] = useAuthState(auth)
     const { name, slots } = treatment;
+
+    let formattedDate = format(date, 'PP');
     const handleForm = (e) => {
         const name = e.target.name.value;
         const phone = e.target.phone.value;
         const email = e.target.email.value;
-        console.log({ name, phone, email });
 
+        const bookingInfo = {
+            serviceName: treatment.name,
+            patientName: name,
+            phone,
+            email,
+            slots,
+            date: formattedDate
+        }
+        console.log(bookingInfo);
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookingInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            });
 
         e.preventDefault();
         setTreatment(null)
     }
-    let formattedDate = format(date, 'PP');
     return (
         <div>
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -36,7 +56,7 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
 
                             <input type="text" name='name' value={user?.displayName} disabled className="input input-bordered w-full max-w-xs mb-2" />
                             <input type="email" name='email' value={user?.email} disabled className="input input-bordered w-full max-w-xs mb-2" />
-                            <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full max-w-xs mb-2" />
+                            <input type="number" name='phone' placeholder="Phone Number" required className="input input-bordered w-full max-w-xs mb-2" />
                             <input type="submit"
                                 value="submit"
                                 className="btn-accent cursor-pointer input input-bordered w-full max-w-xs mb-2"

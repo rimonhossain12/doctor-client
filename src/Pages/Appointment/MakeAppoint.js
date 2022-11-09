@@ -4,7 +4,7 @@ const MakeAppoint = ({ service, setTreatment }) => {
     const { name, slots } = service;
     return (
         <>
-            <div className="card lg:max-w-96 bg-base-100 shadow-xl">
+            <div className="card lg:max-w-96  bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-center text-secondary text-xl font-semibold">{name}</h2>
                     <div>

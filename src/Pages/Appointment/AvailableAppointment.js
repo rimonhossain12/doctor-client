@@ -10,7 +10,7 @@ const AvailableAppointment = ({ date }) => {
 
     let formattedDate = format(date, 'PP');
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data)

@@ -32,7 +32,7 @@ const ShowTreatment = () => {
     ]
     return (
         <section>
-            <div className='py-10 sm:w-screen md:hidden lg:hidden "rounded-md'>
+        <div className='md:hidden lg:hidden rounded-md'>
                 <h3 className='text-secondary uppercase text-2xl mb-3'>Our services</h3>
                 <p className='text-accent text-4xl text-start'>Services we give</p>
             </div>
