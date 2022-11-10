@@ -3,19 +3,38 @@ import { format } from 'date-fns';
 import SampleService from './SampleService';
 import MakeAppoint from './MakeAppoint';
 import BookingModal from './BookingModal';
+import { useQuery } from 'react-query'
+import LoadingSpinner from '../Shared/LoadingSpinner';
+
 
 const AvailableAppointment = ({ date }) => {
-    const [services, setServices] = useState([]);
+    // const [services, setServices] = useState([]);
     const [treatment, setTreatment] = useState(null);
 
     let formattedDate = format(date, 'PP');
-    useEffect(() => {
-        fetch('http://localhost:5000/services')
+
+    // using react query 
+    const { isLoading, data: services, error } = useQuery((['available', formattedDate]), () => {
+        fetch(`http://localhost:5000/available?date=${formattedDate}`)
             .then(res => res.json())
-            .then(data => {
-                setServices(data)
-            })
-    }, []);
+    })
+
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
+
+    if (error) {
+        return 'An error has occurred: ' + error.message;
+    }
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/available?date=${formattedDate}`)
+    //     // fetch('services.json')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setServices(data)
+    //         })
+    // }, [formattedDate]);
 
     return (
         <div className='mb-10'>
