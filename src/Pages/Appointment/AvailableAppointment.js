@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { format } from 'date-fns';
 import SampleService from './SampleService';
 import MakeAppoint from './MakeAppoint';
@@ -7,18 +7,17 @@ import { useQuery } from 'react-query'
 import LoadingSpinner from '../Shared/LoadingSpinner';
 
 
-const AvailableAppointment = ({ date }) => {
-    // const [services, setServices] = useState([]);
-    const [treatment, setTreatment] = useState(null);
 
+const AvailableAppointment = ({ date }) => {
+    const [treatment, setTreatment] = useState(null);
     let formattedDate = format(date, 'PP');
 
-    // using react query 
-    const { isLoading, data: services, error } = useQuery((['available', formattedDate]), () => {
-        fetch(`http://localhost:5000/available?date=${formattedDate}`)
-            .then(res => res.json())
-    })
-
+    // react query 
+    const { isLoading, error, data: services, refetch } = useQuery((['available', formattedDate]), () =>
+        fetch(`http://localhost:5000/available?date=${formattedDate}`).then(res =>
+            res.json()
+        )
+    )
     if (isLoading) {
         return <LoadingSpinner />
     }
@@ -27,14 +26,11 @@ const AvailableAppointment = ({ date }) => {
         return 'An error has occurred: ' + error.message;
     }
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/available?date=${formattedDate}`)
-    //     // fetch('services.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setServices(data)
-    //         })
-    // }, [formattedDate]);
+
+//    useEffect(() => {
+//     fetch('')
+//    },[])
+
 
     return (
         <div className='mb-10'>
@@ -66,6 +62,7 @@ const AvailableAppointment = ({ date }) => {
                 setTreatment={setTreatment}
                 treatment={treatment}
                 date={date}
+                refetch={refetch}
             />}
 
         </div>
