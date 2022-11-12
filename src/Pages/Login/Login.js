@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
+import useToken from '../../hooks/useToken';
 
 
 
@@ -22,6 +23,9 @@ const Login = () => {
 	let navigate = useNavigate();
 	const location = useLocation();
 	const from = location?.state?.from?.pathname || "/";
+
+	// store login & sign in user all information in database
+	const [token] = useToken(gUser || user);
 
 	const onSubmit = (data) => {
 		signInWithEmailAndPassword(data.email, data.password);

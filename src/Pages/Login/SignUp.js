@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/LoadingSpinner';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -24,6 +25,8 @@ const SignUp = () => {
         await updateProfile({ displayName: data.name })
         // console.log(data)
     };
+
+    const [token] = useToken(gUser || user)
 
     if (error || uError || gError) {
         signInError = <p className='text-red-500 text-thin'>{error.message}</p>
