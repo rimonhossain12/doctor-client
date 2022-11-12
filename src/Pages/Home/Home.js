@@ -2,6 +2,7 @@ import React from 'react';
 import Contact from '../Contact/Contact';
 import MakeAppointment from '../MakeAppointment/MakeAppointment';
 import FooterBg from '../Shared/FooterBg';
+import Navbar from '../Shared/Navbar';
 import Testimonial from '../Testimonial/Testimonial';
 import Banner from './Banner';
 import Information from './Information';
@@ -11,6 +12,7 @@ import TeethService from './TeethService';
 const Home = () => {
     return (
         <>
+         < Navbar />
             <div className='px-12'>
                 <Banner />
                 <Information />

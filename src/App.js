@@ -11,12 +11,12 @@ import ContactUs from './Pages/Contact/ContactUs';
 import RequireAuth from './Pages/Login/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import DashBoard from './Dashboard/DashBoard';
 
 
 function App() {
 	return (
 		<div className="App">
-			<Navbar />
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/home' element={<Home />} />
@@ -27,6 +27,8 @@ function App() {
 						<Appointment />
 					</RequireAuth>
 				} />
+
+				<Route path='/dashboard' element={<DashBoard />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<SignUp />} />
 				<Route path='/contact' element={<ContactUs />} />

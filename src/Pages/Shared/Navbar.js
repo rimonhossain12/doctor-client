@@ -16,12 +16,14 @@ const Navbar = () => {
 		<li tabIndex={2}> <Link to="/appointment">Appointment</Link> </li>
 		<li tabIndex={3}> <Link to="/review">Review</Link> </li>
 		<li tabIndex={4}> <Link to="/contact">Contact us</Link> </li>
+		<li tabIndex={5}><Link to="/dashboard">Dashboard</Link> </li>
 		{
 			user?.email ? <button
 				onClick={logout}
 				className="btn btn-active btn-ghost"
-			>LogOut</button> : <li tabIndex={5}> <Link to="/login">Login</Link> </li>
+			>LogOut</button> : <li tabIndex={6}> <Link to="/login">Login</Link> </li>
 		}
+
 	</>
 	return (
 		<div className='sticky top-0 z-50'>
