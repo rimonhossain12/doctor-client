@@ -30,17 +30,17 @@ const AllUsers = () => {
                             <th>Position</th>
                         </tr>
                     </thead>
-                    {
-                        users.map((user, index) =>
-                            <tbody>
-                                <tr>
-                                    <th>{index + 1}</th>
-                                    <td>{user?.displayName}</td>
-                                    <td>{user?.email}</td>
-                                    <td>Customer</td>
-                                </tr>
-                            </tbody>)
-                    }
+                    <tbody>
+                        {
+                            users.map((user, index) => <tr>
+                                <td>{index + 1}</td>
+                                <td>{user?.displayName}</td>
+                                <td>{user?.email}</td>
+                                <td>Customer</td>
+                            </tr>)
+                        }
+
+                    </tbody>
                 </table>
             </div>
         </div>

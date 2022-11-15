@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Appointment from './Pages/Appointment/Appointment';
 import About from './Pages/About/About';
-import Review from './Pages/Review/Review';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/Login/SignUp';
 import ContactUs from './Pages/Contact/ContactUs';
@@ -23,7 +22,6 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/home' element={<Home />} />
 				<Route path='/about' element={<About />} />
-				<Route path='/review' element={<Review />} />
 				<Route path='/appointment' element={
 					<RequireAuth>
 						<Appointment />
@@ -35,7 +33,6 @@ function App() {
 					</RequireAuth>
 				}>
 					<Route path='myAppointment' element={<MyAppointment />}></Route>
-					<Route path='review' element={<Review />}></Route>
 					<Route path='allUser' element={<AllUser />}></Route>
 				</Route>
 
