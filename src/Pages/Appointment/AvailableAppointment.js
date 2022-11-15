@@ -26,12 +26,6 @@ const AvailableAppointment = ({ date }) => {
         return 'An error has occurred: ' + error.message;
     }
 
-
-//    useEffect(() => {
-//     fetch('')
-//    },[])
-
-
     return (
         <div className='mb-10'>
             <h2 className='text-xl text-primary'>Available Service on: {formattedDate}</h2>

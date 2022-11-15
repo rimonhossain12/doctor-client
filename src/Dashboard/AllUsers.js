@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
+import LoadingSpinner from '../Pages/Shared/LoadingSpinner';
 
 const AllUsers = () => {
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/allUser')
-            .then(res => res.json())
-            .then(data => {
-                setUsers(data);
-            })
-    }, []);
 
+    const { isLoading, error, data: users } = useQuery(('allUser'), () => fetch('http://localhost:5000/allUser')
+        .then(res => res.json()
+        )
+    );
+
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
+
+    if (error) {
+        return 'An error has occurred' + error.message;
+    }
 
     return (
         <div>
@@ -18,32 +24,23 @@ const AllUsers = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>Serial</th>
+                            <th>Name</th>
                             <th>Email</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Position</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
-                    </tbody>
+                    {
+                        users.map((user, index) =>
+                            <tbody>
+                                <tr>
+                                    <th>{index + 1}</th>
+                                    <td>{user?.displayName}</td>
+                                    <td>{user?.email}</td>
+                                    <td>Customer</td>
+                                </tr>
+                            </tbody>)
+                    }
                 </table>
             </div>
         </div>
