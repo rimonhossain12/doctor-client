@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const useToken = (user) => {
-    const [token, setToken] = useState('');
+    const [token] = useState('');
 
     useEffect(() => {
         const email = user?.user.email;
-        const currentUser = { email: email };
+        const name = user?.user.displayName;
+        const currentUser = { email: email, displayName: name };
+
+        console.log('user list = ', { currentUser, name });
+
         if (email) {
             const url = `http://localhost:5000/users/${email}`;
-            console.log('url = ', url);
             fetch(url, {
                 method: "PUT",
                 headers: {

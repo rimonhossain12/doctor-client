@@ -16,7 +16,9 @@ const Navbar = () => {
 		<li tabIndex={2}> <Link to="/appointment">Appointment</Link> </li>
 		<li tabIndex={3}> <Link to="/review">Review</Link> </li>
 		<li tabIndex={4}> <Link to="/contact">Contact us</Link> </li>
-		<li tabIndex={5}><Link to="/dashboard">Dashboard</Link> </li>
+		{
+			user?.email && <li tabIndex={5}><Link to="/dashboard">Dashboard</Link> </li>
+		}
 		{
 			user?.email ? <button
 				onClick={logout}
