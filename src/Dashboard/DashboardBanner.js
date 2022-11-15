@@ -1,10 +1,9 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Outlet } from 'react-router-dom';
 import auth from '../firebase.init';
-import DrawerSideBar from './DrawerSideBar';
+import DashBoard from './DashBoard';
 
-const DashBoard = () => {
+const DashboardBanner = () => {
     const [user] = useAuthState(auth);
     return (
         <div>
@@ -12,8 +11,8 @@ const DashBoard = () => {
                 <div className="navbar-start">
                 </div>
                 <div className="navbar-center">
-                    <h2 className="capitalize text-xl text-accent text-thin font-mono">Welcome to
-                        <span className='text-primary'> {user?.displayName} </span> dashboard</h2>
+                    <h2 className="capitalize text-xl text-accent text-thin font-mono">Welcome
+                        <span className='text-primary'> {user?.displayName} </span> to your dashboard</h2>
                 </div>
                 <div className="navbar-end">
                     <button className="btn btn-ghost btn-circle block lg:hidden">
@@ -24,18 +23,10 @@ const DashBoard = () => {
                     </button>
                 </div>
             </div>
-            <DrawerSideBar />
-            <div className='text-start'>
-                <h2 className="text-4xl">
-                    <Outlet />
-                </h2>
-            </div>
 
+            <DashBoard />
         </div>
-
-
-
     );
 };
 
-export default DashBoard;
+export default DashboardBanner;
