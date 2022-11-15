@@ -33,7 +33,7 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
             body: JSON.stringify(bookingInfo)
         })
             .then(res => res.json())
-            .then(data => {      
+            .then(data => {
                 if (data.success) {
                     toast.success(`Set an appointment on ${formattedDate} and ${slot}`)
                 } else {
@@ -61,10 +61,11 @@ const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
                                     slots.map((slot, index) => <option key={index} value={slot}>{slot}</option>)
                                 }
                             </select>
-
-                            <input type="text" name='name' value={user?.displayName} disabled className="input input-bordered w-full max-w-xs mb-2" />
+                            <input type="text" name='name' value={user?.displayName} disabled className="input input-bordered
+                             w-full max-w-xs mb-2" />
                             <input type="email" name='email' value={user?.email} disabled className="input input-bordered w-full max-w-xs mb-2" />
-                            <input type="number" name='phone' placeholder="Phone Number" required className="input input-bordered w-full max-w-xs mb-2" />
+                            <input type="number" name='phone' placeholder="Phone Number" required className="input input-bordered
+                             w-full max-w-xs mb-2" />
                             <input type="submit"
                                 value="submit"
                                 className="btn-accent cursor-pointer input input-bordered w-full max-w-xs mb-2"

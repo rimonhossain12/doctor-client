@@ -6,7 +6,6 @@ import DrawerSideBar from './DrawerSideBar';
 
 const DashBoard = () => {
     const [user] = useAuthState(auth);
-    // console.log(user.auth);
     return (
         <div className='my-12'>
             <div className="navbar bg-base-100">
@@ -29,7 +28,6 @@ const DashBoard = () => {
             <div className='text-start'>
                 <h2 className="text-4xl">
                     <Outlet />
-                    {/* <Outlet /> */}
                 </h2>
             </div>
 
