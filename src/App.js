@@ -1,6 +1,5 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './Pages/Shared/Navbar';
 import Home from './Pages/Home/Home';
 import Appointment from './Pages/Appointment/Appointment';
 import About from './Pages/About/About';
@@ -12,6 +11,7 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import DashBoard from './Dashboard/DashBoard';
+import MyAppoint from './Dashboard/MyAppoint';
 
 
 function App() {
@@ -27,8 +27,16 @@ function App() {
 						<Appointment />
 					</RequireAuth>
 				} />
+				<Route path='/dashboard' element={
+					<RequireAuth>
+						<DashBoard />
+					</RequireAuth>
+				}>
+					<Route path='myAppointment' element={<MyAppoint />}></Route>
+					<Route path='review' element={<Review />}></Route>
+				</Route>
 
-				<Route path='/dashboard' element={<DashBoard />} />
+				<Route path='/dashboard' element={<MyAppoint />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<SignUp />} />
 				<Route path='/contact' element={<ContactUs />} />
