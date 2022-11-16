@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const DrawerSideBar = () => {
     return (
-        <div>
-            <div className="drawer drawer-mobile">
+        <div className='absolute z-50 w-full'>
+            <div className="drawer drawer-mobile w-full">
                 <input id="dashboard-drower-sidebar" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drower-sidebar" className="drawer-overlay"></label>

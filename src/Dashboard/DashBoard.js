@@ -24,11 +24,13 @@ const DashBoard = () => {
                     </button>
                 </div>
             </div>
-            <DrawerSideBar />
-            <div className='text-start'>
-                <h2 className="text-4xl">
-                    <Outlet />
-                </h2>
+            <div className='flex w-full relative'>
+                <DrawerSideBar />
+                <div className='text-start w-full'>
+                    <h2 className="text-4xl">
+                        <Outlet />
+                    </h2>
+                </div>
             </div>
 
         </div>
